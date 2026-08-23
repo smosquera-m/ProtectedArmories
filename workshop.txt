@@ -3,24 +3,56 @@ publishedID=3788795717
 title=Protected Armories & Loot Respawn
 description=Protege automáticamente armarios de armas y contenedores en comisarías, armerías, tiendas de armas, bases militares y prisiones: inamovibles, indestructibles y con reaparición automática de loot inicial.
 
-[h1]🛡️ CONTENEDORES Y MUEBLES AFECTADOS[/h1]
+[h1]🧟 Protected Armories & Loot Respawn[/h1]
+[i]Unbreakable protection for armories, police lockers, gun stores & military bases in Project Zomboid (Build 42 & Build 41)[/i]
 
-[h2]1. Sprites Específicos de Armería (Protegidos en cualquier lugar del mapa):[/h2]
-• Armarios dobles metálicos de armas: furniture_storage_02_8, furniture_storage_02_9
-• Armarios individuales metálicos de armas: furniture_storage_02_10, furniture_storage_02_11
-• Armarios metálicos blindados de equipamiento / armadura: furniture_storage_02_4, furniture_storage_02_5, furniture_storage_02_6, furniture_storage_02_7
+[hr][/hr]
 
-[h2]2. Habitaciones Protegidas (Todos los contenedores dentro de estas salas):[/h2]
-• Comisarías de Policía: policestorage, policegunstorage, policelocker, policeswat, policeoutfitstorage, policearchive, policeoffice, policeevidence, policehall, police
-• Tiendas de Armas: gunstore, gunstorestorage, gunstoredisplay
-• Bases y Tiendas Militares: armystorage, armysurplus, armytent, armymedical, army
-• Prisiones y Seguridad: prisonstorage, prisonarmory, prisoncell, prison, security, securitystorage
+[h2]⭐ CARACTERÍSTICAS PRINCIPALES / FEATURES[/h2]
 
-[h1]⭐ CARACTERÍSTICAS PRINCIPALES[/h1]
-• Inamovible: Bloquea Pick Up / Levantar muebles.
-• Indestructible: Bloquea Disassemble / Scrap / Mazo (Sledgehammer) para TODOS los jugadores.
-• Loot Respawn: Snapshot del loot inicial al abrir por primera vez y reposición periódica (cada 24h por defecto).
-• Menú Informativo: Clic derecho muestra "🔒 Armería Protegida [Ubicación]".
-• Compatible con Build 42 (B42.20.3+) y Build 41 (B41.78+).
+[list]
+[*] [b]🔒 Inamovible (Immovable):[/b] Anula la herramienta de mover/levantar muebles ([i]Pick Up[/i]).
+[*] [b]🔨 Indestructible:[/b] Anula las herramientas de desguazar/desmontar ([i]Disassemble / Scrap[/i]) y destrucción con mazo ([i]Sledgehammer[/i]) para [b]TODOS[/b] los jugadores sin excepción.
+[*] [b]🔄 Loot Respawn Automático:[/b] Guarda un [i]snapshot[/i] del contenido inicial del contenedor (armas, accesorios, municiones) y lo regenera automáticamente cada ciclo (24h de juego por defecto).
+[*] [b]ℹ️ Menú Contextual Informativo:[/b] Clic derecho sobre un armario protegido muestra su estado [b]"🔒 Armería Protegida [Ubicación]"[/b] e información del respawn.
+[*] [b]🎯 Detección Dinámica Universal:[/b] Funciona automáticamente en mapas nativos (Rosewood, Muldraugh, West Point, Riverside, Louisville, etc.) y en mapas de mods personalizados.
+[/list]
+
+[hr][/hr]
+
+[h2]🛡️ CONTENEDORES Y HABITACIONES AFECTADAS[/h2]
+
+[h3]1. Sprites Específicos de Armería (Protegidos en todo el mapa):[/h3]
+[list]
+[*] [b]furniture_storage_02_8, furniture_storage_02_9:[/b] Armarios dobles metálicos de armas.
+[*] [b]furniture_storage_02_10, furniture_storage_02_11:[/b] Armarios individuales metálicos de armas.
+[*] [b]furniture_storage_02_4 .. furniture_storage_02_7:[/b] Armarios metálicos blindados de equipamiento / armadura.
+[/list]
+
+[h3]2. Habitaciones Protegidas (Todos los contenedores dentro de estas salas):[/h3]
+[list]
+[*] [b]Comisarías de Policía:[/b] policestorage, policegunstorage, policelocker, policeswat, policeoutfitstorage, policearchive, policeoffice, policeevidence, policehall, police
+[*] [b]Tiendas de Armas:[/b] gunstore, gunstorestorage, gunstoredisplay
+[*] [b]Bases & Tiendas Militares:[/b] armystorage, armysurplus, armytent, armymedical, army
+[*] [b]Prisiones & Seguridad:[/b] prisonstorage, prisonarmory, prisoncell, prison, security, securitystorage
+[/list]
+
+[hr][/hr]
+
+[h2]⚙️ OPCIONES DE SANDBOX CONFIGURABLES[/h2]
+[list]
+[*] [b]ProtectPolice / ProtectGunStores / ProtectMilitary / ProtectPrisons:[/b] Activa o desactiva la protección por tipo de zona.
+[*] [b]PreventMoving / PreventDisassembling / PreventSledgehammer:[/b] Activa o desactiva el bloqueo de mover, desmontar o mazo.
+[*] [b]EnableLootRespawn / RespawnIntervalHours:[/b] Configura el ciclo de reaparición del loot (ej: cada 24 horas).
+[/list]
+
+[hr][/hr]
+
+[h2]🌐 COMPATIBILIDAD[/h2]
+• [b]Project Zomboid Build 42[/b] (Build 42.20.3+)
+• [b]Project Zomboid Build 41[/b] (Build 41.78+)
+• [b]Singleplayer & Multiplayer Dedicated Servers[/b]
+
+[i]Mod creado por Sergio. ¡Disfrútalo y protege tus armerías frente a grifeos![/i]
 tags=Build 42;Build 41;Items;Building;Interface
 visibility=public

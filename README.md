@@ -1,60 +1,83 @@
-# 🧟 Protected Armories & Loot Respawn (Build 42 & 41)
-> **Mod para Project Zomboid (Build 42.x & Build 41.x)**  
-> *Protege automáticamente armarios de armas y contenedores en comisarías, armerías, tiendas de armas, bases militares y prisiones: inamovibles, indestructibles y con reaparición automática de loot inicial.*
+<div align="center">
+
+![Protected Armories & Loot Respawn](poster.png)
+
+# 🧟 Protected Armories & Loot Respawn
+
+**Protección absoluta e indestructible para armerías, comisarías, tiendas de armas y bases militares en Project Zomboid.**
+
+[![Project Zomboid Build 42](https://img.shields.io/badge/Project_Zomboid-Build_42_%26_41-orange.svg?style=for-the-badge&logo=projectzomboid)](https://projectzomboid.com/)
+[![Steam Workshop](https://img.shields.io/badge/Steam_Workshop-3788795717-blue.svg?style=for-the-badge&logo=steam)](https://steamcommunity.com/sharedfiles/filedetails/?id=3788795717)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+[![Status](https://img.shields.io/badge/Tests-18%2F18_Passing-brightgreen.svg?style=for-the-badge)]()
+
+</div>
 
 ---
 
-## 📌 1. Características Principales
+## 📖 Acerca del Mod
 
-1. **🔒 Protección Absoluta e Inquebrantable:**
-   - **Inamovible:** Bloquea la herramienta de mover muebles (`Pick Up`).
-   - **Indestructible:** Bloquea las herramientas de desmontar/desguazar (`Disassemble` / `Scrap`) y destrucción con mazo (*Sledgehammer*).
-   - **Sin excepciones:** La protección aplica para **todos** los jugadores (incluyendo usuarios con rol de Administrador).
+**Protected Armories & Loot Respawn** es un mod avanzado para **Project Zomboid (Build 42.x & Build 41.x)** diseñado para servidores multijugador y partidas en solitario. Identifica y protege automáticamente todos los contenedores de armas y armaduras en comisarías, tiendas de armas, puestos militares y prisiones de Knox Country.
 
-2. **🔄 Reaparición Automática de Loot Inicial (*Loot Respawn*):**
-   - Guarda una copia (*snapshot*) de las armas, municiones y accesorios iniciales en el `ModData` del mueble al cargarse o abrirse por primera vez.
-   - Restaura automáticamente cualquier objeto saqueado en cada ciclo configurable (por defecto cada 24 horas del juego).
-
-3. **ℹ️ Menú Informativo de Clic Derecho:**
-   - Al hacer clic derecho sobre un armario protegido, se muestra la entrada:
-     ```text
-     🔒 Armería Protegida [Ubicación]
-        ├── Contenedor inamovible e indestructible
-        ├── Ubicación: Police Armory (policegunstorage)
-        └── Respawn de Loot: Activo (Cada 24h)
-     ```
-
-4. **🎯 Detección Dinámica Inteligente:**
-   - Detecta automáticamente los muebles de armas por su tipo de sprite (`furniture_storage_02_*`) en cualquier parte del mapa.
-   - Detecta automáticamente todos los contenedores dentro de salas de armería (`policegunstorage`, `gunstorestorage`, `armystorage`, `prisonstorage`, etc.).
+> [!IMPORTANT]
+> **Protección Absoluta Sin Excepciones:** Los contenedores protegidos son **100% inamovibles e indestructibles** por métodos tradicionales para **TODOS** los jugadores (incluyendo usuarios con rol de Administrador o Moderador).
 
 ---
 
-## ⚙️ 2. Opciones Configurables (Sandbox Vars)
+## ⚡ Características Destacadas
 
-El mod incluye opciones personalizables desde el menú de Sandbox al crear o modificar una partida:
+* 🔒 **Bloqueo Inamovible:** Anula la herramienta de mover/levantar muebles (`Pick Up`).
+* 🔨 **Bloqueo Indestructible:** Anula las opciones de desguazar/desmontar (`Disassemble` / `Scrap`) y la destrucción con mazo (*Sledgehammer*).
+* 🔄 **Reaparición Automática de Loot (*Loot Respawn*):** Realiza un *snapshot* del contenido inicial del contenedor (armas, accesorios, municiones) y lo regenera automáticamente cada ciclo configurable (por defecto **24 horas de juego**).
+* ℹ️ **Menú Contextual Informativo:** Clic derecho sobre un contenedor muestra un submenú limpio con el estado y la ubicación de la armería.
+* 🎯 **Detección Dinámica Universal:** Funciona automáticamente en mapas nativos (Rosewood, Muldraugh, West Point, Riverside, Louisville, etc.) y en mapas de mods personalizados.
 
-| Variable Sandbox | Valor por Defecto | Descripción |
+---
+
+## 🛡️ Contenedores y Habitaciones Protegidas
+
+### 1. Sprites Específicos de Armería (Protegidos en todo el mapa)
+| Sprite ID | Tipo de Contenedor | Descripción |
 | :--- | :--- | :--- |
+| `furniture_storage_02_8` | Armario metálico doble | Armario de armas con rejilla frontal |
+| `furniture_storage_02_9` | Armario metálico doble | Armario de armas (orientación E/O) |
+| `furniture_storage_02_10` | Armario metálico individual | Armario individual de armas |
+| `furniture_storage_02_11` | Armario metálico individual | Armario individual de armas |
+| `furniture_storage_02_4` .. `furniture_storage_02_7` | Armarios blindados | Armarios metálicos de equipamiento / armadura |
+
+### 2. Habitaciones Protegidas (`RoomDef`)
+* **Comisarías de Policía:** `policestorage`, `policegunstorage`, `policelocker`, `policeswat`, `policeoutfitstorage`, `policearchive`, `policeoffice`, `policeevidence`, `policehall`, `police`
+* **Tiendas de Armas:** `gunstore`, `gunstorestorage`, `gunstoredisplay`
+* **Bases & Tiendas Militares:** `armystorage`, `armysurplus`, `armytent`, `armymedical`, `army`
+* **Prisiones & Seguridad:** `prisonstorage`, `prisonarmory`, `prisoncell`, `prison`, `security`, `securitystorage`
+
+---
+
+## ⚙️ Opciones de Sandbox (Sandbox Vars)
+
+Puedes personalizar el comportamiento del mod directamente desde las opciones de Sandbox:
+
+| Variable | Defecto | Descripción |
+| :--- | :---: | :--- |
 | `ProtectPolice` | `true` | Proteger comisarías de policía y taquillas armeras. |
 | `ProtectGunStores` | `true` | Proteger tiendas de armas y sus almacenes. |
 | `ProtectMilitary` | `true` | Proteger bases militares, armerías y tiendas surplus. |
 | `ProtectPrisons` | `true` | Proteger armerías y taquillas de prisiones. |
-| `PreventMoving` | `true` | Impedir mover o levantar los contenedores. |
-| `PreventDisassembling` | `true` | Impedir desmontar o desguazar. |
-| `PreventSledgehammer` | `true` | Impedir destrucción con mazo. |
+| `PreventMoving` | `true` | Bloquear mover o levantar muebles. |
+| `PreventDisassembling` | `true` | Bloquear desguazar o desmontar. |
+| `PreventSledgehammer` | `true` | Bloquear destrucción con mazo. |
 | `EnableLootRespawn` | `true` | Activar reaparición periódica del loot inicial. |
-| `RespawnIntervalHours` | `24` | Intervalo en horas de juego para el respawn de loot. |
+| `RespawnIntervalHours` | `24` | Intervalo en horas de juego para el respawn del loot. |
 
 ---
 
-## 📍 3. Lista de Ubicaciones y Comandos de Teletransporte
+## 📍 Lista de Ubicaciones y Comandos de Teletransporte
 
-Puedes usar estos comandos en el chat del juego (`/teleportto X,Y,Z`) o en la consola de Lua (`getPlayer():setX(X); getPlayer():setY(Y); getPlayer():setZ(Z)`) para probar cualquier armería:
+Puedes usar estos comandos directamente en el chat (`/teleportto X,Y,Z`) o en la consola Lua (`getPlayer():setX(X); getPlayer():setY(Y); getPlayer():setZ(Z)`):
 
 ### 🚓 Comisarías de Policía
-| Ubicación | Zona de Protección | Coordenadas `(X, Y, Z)` | Comando Chat |
-| :--- | :--- | :--- | :--- |
+| Ubicación | Zona | Coordenadas `(X, Y, Z)` | Comando de Teletransporte |
+| :--- | :--- | :---: | :--- |
 | **Rosewood Police Station** | `policegunstorage` | `8067, 11722, 0` | `/teleportto 8067,11722,0` |
 | **Muldraugh Police Station** | `policegunstorage` | `10635, 10410, 0` | `/teleportto 10635,10410,0` |
 | **West Point Police Station** | `policegunstorage` | `11900, 6960, 0` | `/teleportto 11900,6960,0` |
@@ -63,45 +86,45 @@ Puedes usar estos comandos en el chat del juego (`/teleportto X,Y,Z`) o en la co
 | **Louisville SWAT HQ / Armory** | `policeswat` | `12350, 3520, 0` | `/teleportto 12350,3520,0` |
 
 ### 🔫 Tiendas de Armas (*Gun Stores*)
-| Ubicación | Zona de Protección | Coordenadas `(X, Y, Z)` | Comando Chat |
-| :--- | :--- | :--- | :--- |
-| **West Point Gun Store** | `gunstore` / `gunstorestorage` | `12065, 6765, 0` | `/teleportto 12065,6765,0` |
+| Ubicación | Zona | Coordenadas `(X, Y, Z)` | Comando de Teletransporte |
+| :--- | :--- | :---: | :--- |
+| **West Point Gun Store** | `gunstorestorage` | `12065, 6765, 0` | `/teleportto 12065,6765,0` |
 | **Doe Valley Gun Store** | `gunstore` | `3790, 8520, 0` | `/teleportto 3790,8520,0` |
 | **Louisville East Gun Store** | `gunstorestorage` | `13240, 3340, 0` | `/teleportto 13240,3340,0` |
 | **Louisville West Gun Store** | `gunstorestorage` | `12110, 1530, 0` | `/teleportto 12110,1530,0` |
 
 ### 🎖️ Bases y Tiendas Militares (*Army & Surplus*)
-| Ubicación | Zona de Protección | Coordenadas `(X, Y, Z)` | Comando Chat |
-| :--- | :--- | :--- | :--- |
+| Ubicación | Zona | Coordenadas `(X, Y, Z)` | Comando de Teletransporte |
+| :--- | :--- | :---: | :--- |
 | **Dixie Highway Army Surplus** | `armysurplus` | `11580, 8820, 0` | `/teleportto 11580,8820,0` |
 | **Valley Station Surplus Store** | `armysurplus` | `12905, 5120, 0` | `/teleportto 12905,5120,0` |
 | **Louisville Checkpoint Storage** | `armystorage` | `12550, 4300, 0` | `/teleportto 12550,4300,0` |
-| **Base Militar Secreta (Bosque)** | `armystorage` | `5570, 12480, 0` | `/teleportto 5570,12480,0` |
+| **Secret Military Base (Forest)** | `armystorage` | `5570, 12480, 0` | `/teleportto 5570,12480,0` |
 
 ### 🔒 Prisiones y Seguridad
-| Ubicación | Zona de Protección | Coordenadas `(X, Y, Z)` | Comando Chat |
-| :--- | :--- | :--- | :--- |
+| Ubicación | Zona | Coordenadas `(X, Y, Z)` | Comando de Teletransporte |
+| :--- | :--- | :---: | :--- |
 | **Rosewood Prison Armory** | `prisonarmory` | `7660, 11825, 0` | `/teleportto 7660,11825,0` |
 | **March Ridge Security Office** | `securitystorage` | `10100, 12720, 0` | `/teleportto 10100,12720,0` |
 | **Louisville Pawn Shop** | `securitystorage` | `12810, 3620, 0` | `/teleportto 12810,3620,0` |
 
 ---
 
-## 🛠️ 4. Herramientas para Desarrolladores (`dev.py`)
+## 🛠️ Developer Toolkit (`dev.py`)
 
-El proyecto incluye un CLI automático en Python para análisis estático, ejecución de tests y despliegue directo a la carpeta de mods del juego:
+El repositorio incluye un conjunto de herramientas CLI automáticas en Python para garantizar la calidad del código:
 
 ```bash
-# Ejecutar todo el pipeline (Linter + Test Suite + Sync automático)
+# Ejecutar pipeline completo (Linter + Test Suite + Sync automático)
 python dev.py all
 
 # Análisis estático y verificación de sintaxis Lua
 python dev.py lint
 
-# Ejecución de la suite de pruebas unitarias automatizadas (18 tests)
+# Ejecutar suite de pruebas unitarias (18 tests)
 python dev.py test
 
-# Sincronización y despliegue directo a la carpeta de mods de Project Zomboid
+# Desplegar automáticamente a la carpeta de mods del juego y Workshop
 python dev.py sync
 
 # Modo observador (Watcher): Re-analiza y re-despliega automáticamente al guardar
@@ -110,15 +133,5 @@ python dev.py watch
 
 ---
 
-## 📦 5. Instalación
-
-1. Copia la carpeta `ProtectedArmories` a la ruta de mods de Project Zomboid:
-   `C:\Users\<TuUsuario>\Zomboid\mods\ProtectedArmories\`
-2. Activa el mod en el menú de **Mods** del juego.
-3. Al iniciar una nueva partida o cargar una existente, los contenedores quedarán protegidos automáticamente.
-
----
-
-## 📜 Licencia y Créditos
-- **Autor:** Sergio
-- **Versión de Project Zomboid:** Build 42.20.3+ / Build 41.78+
+## 📜 Licencia
+Este proyecto está bajo la Licencia MIT. Creado por **Sergio**.
