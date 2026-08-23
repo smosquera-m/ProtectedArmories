@@ -47,7 +47,7 @@ def sync_build():
 
     # Copy root workspace items to target mod folder (excluding .git, etc.)
     for item in ROOT_DIR.iterdir():
-        if item.name.startswith(".") or item.name == "tools" or item.name == "dev.py":
+        if item.name.startswith(".") or item.name == "tools" or item.name == "dev.py" or item.name == "scratch":
             continue
         dest = TARGET_MOD_DIR / item.name
         if item.is_dir():
@@ -58,6 +58,39 @@ def sync_build():
             shutil.copy2(item, dest)
 
     print(f"  {GREEN}[OK]{RESET} Mod successfully deployed to {TARGET_MOD_DIR}")
+
+    # 3. Deploy to Zomboid Workshop directories (ProtectedArmories & PreventMovingContainers)
+    workshop_root = Path(r"C:\Users\sergi\Zomboid\Workshop")
+    if workshop_root.exists():
+        workshop_targets = ["ProtectedArmories", "PreventMovingContainers"]
+        for target_name in workshop_targets:
+            target_ws_dir = workshop_root / target_name
+            target_ws_dir.mkdir(parents=True, exist_ok=True)
+            
+            # Copy workshop.txt and preview.png at the root of workshop folder
+            for fname in ["workshop.txt", "preview.png"]:
+                src = ROOT_DIR / fname
+                if src.exists():
+                    shutil.copy2(src, target_ws_dir / fname)
+
+            # Copy mod content into Contents/mods/<mod_name>
+            mod_subfolder_name = "ProtectedArmories" if target_name == "ProtectedArmories" else "PreventMovingContainers"
+            contents_mod_dir = target_ws_dir / "Contents" / "mods" / mod_subfolder_name
+            contents_mod_dir.mkdir(parents=True, exist_ok=True)
+
+            for item in ROOT_DIR.iterdir():
+                if item.name.startswith(".") or item.name == "tools" or item.name == "dev.py" or item.name == "scratch" or item.name == "workshop.txt" or item.name == "preview.png":
+                    continue
+                dest = contents_mod_dir / item.name
+                if item.is_dir():
+                    if dest.exists():
+                        shutil.rmtree(dest)
+                    shutil.copytree(item, dest)
+                else:
+                    shutil.copy2(item, dest)
+
+            print(f"  {GREEN}[OK]{RESET} Workshop item updated: {target_ws_dir}")
+
     print(f"\n{GREEN}{BOLD}BUILD & DEPLOYMENT COMPLETE!{RESET}\n")
     return 0
 
