@@ -1,5 +1,26 @@
+id=3788795717
+publishedID=3788795717
 title=Protected Armories & Loot Respawn
 description=Protege automáticamente armarios de armas y contenedores en comisarías, armerías, tiendas de armas, bases militares y prisiones: inamovibles, indestructibles y con reaparición automática de loot inicial.
+
+[h1]🛡️ CONTENEDORES Y MUEBLES AFECTADOS[/h1]
+
+[h2]1. Sprites Específicos de Armería (Protegidos en cualquier lugar del mapa):[/h2]
+• Armarios dobles metálicos de armas: furniture_storage_02_8, furniture_storage_02_9
+• Armarios individuales metálicos de armas: furniture_storage_02_10, furniture_storage_02_11
+• Armarios metálicos blindados de equipamiento / armadura: furniture_storage_02_4, furniture_storage_02_5, furniture_storage_02_6, furniture_storage_02_7
+
+[h2]2. Habitaciones Protegidas (Todos los contenedores dentro de estas salas):[/h2]
+• Comisarías de Policía: policestorage, policegunstorage, policelocker, policeswat, policeoutfitstorage, policearchive, policeoffice, policeevidence, policehall, police
+• Tiendas de Armas: gunstore, gunstorestorage, gunstoredisplay
+• Bases y Tiendas Militares: armystorage, armysurplus, armytent, armymedical, army
+• Prisiones y Seguridad: prisonstorage, prisonarmory, prisoncell, prison, security, securitystorage
+
+[h1]⭐ CARACTERÍSTICAS PRINCIPALES[/h1]
+• Inamovible: Bloquea Pick Up / Levantar muebles.
+• Indestructible: Bloquea Disassemble / Scrap / Mazo (Sledgehammer) para TODOS los jugadores.
+• Loot Respawn: Snapshot del loot inicial al abrir por primera vez y reposición periódica (cada 24h por defecto).
+• Menú Informativo: Clic derecho muestra "🔒 Armería Protegida [Ubicación]".
+• Compatible con Build 42 (B42.20.3+) y Build 41 (B41.78+).
 tags=Build 42;Build 41;Items;Building;Interface
 visibility=public
-publishedID=
