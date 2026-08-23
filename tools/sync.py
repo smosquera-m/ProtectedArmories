@@ -35,7 +35,7 @@ def sync_build():
     shutil.copytree(workspace_media, workspace_42_media)
 
     # Copy root metadata files to 42/
-    for fname in ["mod.info", "poster.png", "icon.png"]:
+    for fname in ["mod.info", "poster.png", "icon.png", "preview.png"]:
         src = ROOT_DIR / fname
         if src.exists():
             shutil.copy2(src, workspace_42 / fname)
