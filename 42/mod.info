@@ -1,0 +1,9 @@
+name=Protected Armories & Loot Respawn
+id=ProtectedArmories
+description=Protege armarios de armas en comisarias, armerias y bases militares: inamovibles, indestructibles y con reaparicion de loot inicial.
+poster=poster.png
+icon=icon.png
+versionMin=42.0.0
+pzversion=42
+modversion=1.0
+authors=Sergio
