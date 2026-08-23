@@ -1,0 +1,5 @@
+title=Protected Armories & Loot Respawn
+description=Protege automáticamente armarios de armas y contenedores en comisarías, armerías, tiendas de armas, bases militares y prisiones: inamovibles, indestructibles y con reaparición automática de loot inicial.
+tags=Build 42;Build 41;Items;Building;Interface
+visibility=public
+publishedID=
