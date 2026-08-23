@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "runtimeId": "pz-42.20.3-steam-24775771-linux-x86_64",
+  "tests": [
+    {
+      "name": "server-load",
+      "script": "tests/integration/ServerLoad.test.lua"
+    }
+  ],
+  "serverProfile": "vanilla-smoke"
+}

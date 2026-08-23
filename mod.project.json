@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "ProtectedArmories",
+  "name": "Protected Armories & Loot Respawn",
+  "version": "1.0.0",
+  "pzRuntime": "pz-42.20.3-steam-24775771-linux-x86_64",
+  "pipelineProfile": "server-gameplay",
+  "serverProfile": "vanilla-smoke",
+  "dependencies": [],
+  "package": {
+    "modId": "ProtectedArmories",
+    "contentRoots": [
+      "common",
+      "42"
+    ],
+    "workshop": {
+      "itemId": "3788795717",
+      "title": "Protected Armories & Loot Respawn",
+      "description": "Protege automáticamente armarios de armas y contenedores en comisarías, armerías, tiendas de armas, bases militares y prisiones: inamovibles, indestructibles y con reaparición automática de loot inicial.",
+      "tags": [
+        "Build 42",
+        "Build 41",
+        "Items",
+        "Building",
+        "Interface"
+      ],
+      "visibility": "public",
+      "preview": "preview.png"
+    }
+  }
+}

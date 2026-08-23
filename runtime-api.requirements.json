@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "runtimeId": "pz-42.20.3-steam-24775771-linux-x86_64",
+  "classes": [
+    "IsoObject",
+    "IsoPlayer",
+    "IsoGridSquare",
+    "ItemContainer",
+    "InventoryItem",
+    "ISContextMenu",
+    "ISMoveableSpriteProps",
+    "ISDestroyCursor",
+    "ISDestroyStuffAction",
+    "ISMoveablesAction"
+  ],
+  "globals": [
+    "ProtectedArmories",
+    "Events",
+    "SandboxVars",
+    "getPlayer",
+    "getSpecificPlayer",
+    "getCell",
+    "getGameTime"
+  ]
+}

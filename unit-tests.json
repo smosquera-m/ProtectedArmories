@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "runtimeId": "pz-42.20.3-steam-24775771-linux-x86_64",
+  "sources": [
+    "media/lua/shared/ProtectedArmories_Config.lua",
+    "media/lua/client/ProtectedArmories_Client.lua",
+    "media/lua/server/ProtectedArmories_Server.lua"
+  ],
+  "tests": [
+    "tests/unit/ProtectedArmories.test.lua"
+  ],
+  "timeoutSeconds": 30
+}
