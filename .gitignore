@@ -1,8 +1,11 @@
 # Antigravity & AI Context / Internal Memory
 CONTEXT_RESUME.md
+AGENTS.md
+.agents/
 .gemini/
 .brain/
 scratch/
+
 
 # IDE & Editor files
 .vscode/
