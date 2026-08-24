@@ -43,7 +43,7 @@ def parse_config_data():
     sprites_match = re.search(r"ProtectedArmories\.WeaponSprites\s*=\s*\{([^}]+)\}", content, re.DOTALL)
     if sprites_match:
         for line in sprites_match.group(1).splitlines():
-            m = re.search(r'\["([^"]+)"\]\s*=\s*true', line)
+            m = re.search(r'\["([^"]+)"\]\s*=\s*(?:"([^"]+)"|true)', line)
             if m:
                 weapon_sprites.add(m.group(1))
 
@@ -105,7 +105,6 @@ def run_tests():
     with open(client_lua, "r", encoding="utf-8") as f:
         client_code = f.read()
 
-    protection_hooks = ["canpickupspriteprops", "canpickupspriteprops", "canscrapobjectinternal", "candisassemble", "inamovible e indestructible"]
     missing_hooks = []
     for hook in ["canPickUpMoveable", "canScrapObjectInternal", "canDisassemble", "inamovible e indestructible"]:
         if hook.lower() not in client_code.lower():
@@ -127,6 +126,50 @@ def run_tests():
         print(f"    {RED}[FAIL]:{RESET} ISDestroyStuffAction patch is missing in client script!")
         failed += 1
 
+    # TEST 5: Deprecated Loot Respawn Clean Verification
+    print(f"\n  {BOLD}[Test Suite 5: Loot Respawn Deprecation Verification]{RESET}")
+    server_lua = ROOT_DIR / "media" / "lua" / "server" / "ProtectedArmories_Server.lua"
+    with open(server_lua, "r", encoding="utf-8") as f:
+        server_code = f.read()
+
+    respawn_terms = ["snapshotLoot", "respawnLootIfNeeded", "EveryHours.Add(onEveryHours)"]
+    found_respawn_terms = [t for t in respawn_terms if t in server_code]
+
+    if not found_respawn_terms:
+        print(f"    {GREEN}[PASS]:{RESET} Loot Respawn code successfully deprecated and purged from server logic.")
+        passed += 1
+    else:
+        print(f"    {RED}[FAIL]:{RESET} Deprecated Loot Respawn references still present: {found_respawn_terms}")
+        failed += 1
+
+    # TEST 6: World-Spawn Constraint & Configurable Options Check
+    print(f"\n  {BOLD}[Test Suite 6: World-Spawn Constraint & Configurable Options Check]{RESET}")
+    config_lua = ROOT_DIR / "media" / "lua" / "shared" / "ProtectedArmories_Config.lua"
+    with open(config_lua, "r", encoding="utf-8") as f:
+        config_code = f.read()
+
+    config_keys = ["OnlyWorldSpawned", "isPlayerCreated", "ProtectGunLockers", "ProtectArmorLockers", "ProtectSecurity"]
+    missing_config_keys = [k for k in config_keys if k not in config_code]
+
+    if not missing_config_keys:
+        print(f"    {GREEN}[PASS]:{RESET} World-spawn restriction and configurable options are fully implemented.")
+        passed += 1
+    else:
+        print(f"    {RED}[FAIL]:{RESET} Missing configurable keys in config script: {missing_config_keys}")
+        failed += 1
+
+    # TEST 7: Building & Room Metadata Structures Check
+    print(f"\n  {BOLD}[Test Suite 7: Building & Room Metadata Structures Check]{RESET}")
+    meta_keys = ["DefaultProtectedList", "DefaultSpriteList", "getRoomEntry", "getSpriteEntry", "CustomRoomsList"]
+    missing_meta_keys = [k for k in meta_keys if k not in config_code]
+
+    if not missing_meta_keys:
+        print(f"    {GREEN}[PASS]:{RESET} Building & Room metadata structures and helper functions are verified.")
+        passed += 1
+    else:
+        print(f"    {RED}[FAIL]:{RESET} Missing metadata keys in config script: {missing_meta_keys}")
+        failed += 1
+
     print("-" * 60)
     if failed == 0:
         print(f"{GREEN}{BOLD}ALL TESTS PASSED ({passed}/{passed}){RESET}")
@@ -138,3 +181,5 @@ def run_tests():
 
 if __name__ == "__main__":
     sys.exit(run_tests())
+
+

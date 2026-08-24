@@ -1,0 +1,106 @@
+VERSION = 1
+
+option ProtectedArmories.OnlyWorldSpawned
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_OnlyWorldSpawned,
+}
+
+option ProtectedArmories.ProtectPolice
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_ProtectPolice,
+}
+
+option ProtectedArmories.ProtectGunStores
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_ProtectGunStores,
+}
+
+option ProtectedArmories.ProtectMilitary
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_ProtectMilitary,
+}
+
+option ProtectedArmories.ProtectPrisons
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_ProtectPrisons,
+}
+
+option ProtectedArmories.ProtectSecurity
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_ProtectSecurity,
+}
+
+option ProtectedArmories.ProtectGunLockers
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_ProtectGunLockers,
+}
+
+option ProtectedArmories.ProtectArmorLockers
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_ProtectArmorLockers,
+}
+
+option ProtectedArmories.PreventMoving
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_PreventMoving,
+}
+
+option ProtectedArmories.PreventDisassembling
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_PreventDisassembling,
+}
+
+option ProtectedArmories.PreventSledgehammer
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_PreventSledgehammer,
+}
+
+option ProtectedArmories.ShowHaloWarning
+{
+    type = boolean,
+    default = true,
+    page = ProtectedArmories,
+    translation = ProtectedArmories_ShowHaloWarning,
+}
+
+option ProtectedArmories.CustomRoomsList
+{
+    type = string,
+    default = "",
+    page = ProtectedArmories,
+    translation = ProtectedArmories_CustomRoomsList,
+}
+

@@ -192,6 +192,20 @@ function ProtectedArmories.applyClientPatches()
         end
     end
 
+        -- Track when players place moveable objects so they are tagged as player created
+        if ISMoveableSpriteProps.placeMoveable then
+            local orig_placeMoveable = ISMoveableSpriteProps.placeMoveable
+            function ISMoveableSpriteProps:placeMoveable(_character, _square, _spriteName)
+                local resObj = orig_placeMoveable(self, _character, _square, _spriteName)
+                local targetObj = resObj or self.object
+                if targetObj and targetObj.getModData then
+                    local md = targetObj:getModData()
+                    if md then md.pzc_playerCreated = true end
+                end
+                return resObj
+            end
+        end
+
     ProtectedArmories.PatchesApplied = true
 end
 
@@ -205,13 +219,15 @@ function ProtectedArmories.onFillWorldObjectContextMenu(playerIndex, context, wo
 
     local targetObj = nil
     local protInfo = "None"
+    local detailObj = nil
 
     for _, obj in ipairs(worldobjects) do
         if obj then
-            local isProt, info = ProtectedArmories.isProtected(obj, nil, playerObj)
+            local isProt, info, _, detail = ProtectedArmories.isProtected(obj, nil, playerObj)
             if isProt then
                 targetObj = obj
                 protInfo = info
+                detailObj = detail
                 break
             end
         end
@@ -219,7 +235,13 @@ function ProtectedArmories.onFillWorldObjectContextMenu(playerIndex, context, wo
 
     if targetObj then
         -- Add informational menu entry for the protected container
-        local menuTitle = "🔒 Armeria Protegida [" .. tostring(protInfo) .. "]"
+        local menuTitle = "🔒 Armeria Protegida"
+        if detailObj and detailObj.building then
+            menuTitle = "🔒 Armeria Protegida [" .. tostring(detailObj.building) .. "]"
+        elseif protInfo and protInfo ~= "None" then
+            menuTitle = "🔒 Armeria Protegida [" .. tostring(protInfo) .. "]"
+        end
+
         local protOption = context:addOption(menuTitle, nil, nil)
         
         local subMenu = nil
@@ -231,12 +253,32 @@ function ProtectedArmories.onFillWorldObjectContextMenu(playerIndex, context, wo
 
         if subMenu then
             context:addSubMenu(protOption, subMenu)
-            subMenu:addOption("Contenedor inamovible e indestructible", nil, nil)
-            subMenu:addOption("Ubicacion: " .. tostring(protInfo), nil, nil)
-            if ProtectedArmories.getOption("EnableLootRespawn") then
-                local respawnH = ProtectedArmories.getOption("RespawnIntervalHours") or 24
-                subMenu:addOption("Respawn de Loot: Activo (Cada " .. tostring(respawnH) .. "h)", nil, nil)
+            if detailObj then
+                if detailObj.building then
+                    subMenu:addOption("Edificio: " .. tostring(detailObj.building), nil, nil)
+                end
+                if detailObj.roomName or detailObj.room then
+                    local roomStr = detailObj.roomName and (detailObj.roomName .. " (" .. detailObj.room .. ")") or detailObj.room
+                    subMenu:addOption("Habitacion: " .. tostring(roomStr), nil, nil)
+                end
+                if detailObj.containerName then
+                    subMenu:addOption("Tipo: " .. tostring(detailObj.containerName), nil, nil)
+                end
+            else
+                subMenu:addOption("Ubicacion: " .. tostring(protInfo), nil, nil)
             end
+            subMenu:addOption("Estado: Inamovible e Indestructible", nil, nil)
+        end
+    end
+end
+
+--- Event listener to tag player constructed object tiles
+local function onObjectAdded(object)
+    if not object or not object.getModData then return end
+    if instanceof and instanceof(object, "IsoThumpable") then
+        local md = object:getModData()
+        if md then
+            md.pzc_playerCreated = true
         end
     end
 end
@@ -245,6 +287,8 @@ end
 if Events then
     if Events.OnGameStart then Events.OnGameStart.Add(ProtectedArmories.applyClientPatches) end
     if Events.OnFillWorldObjectContextMenu then Events.OnFillWorldObjectContextMenu.Add(ProtectedArmories.onFillWorldObjectContextMenu) end
+    if Events.OnObjectAdded then Events.OnObjectAdded.Add(onObjectAdded) end
 end
 
 ProtectedArmories.applyClientPatches()
+

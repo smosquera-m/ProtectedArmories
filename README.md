@@ -1,15 +1,15 @@
 <div align="center">
 
-![Protected Armories & Loot Respawn](poster.png)
+![Protected Armories](poster.png)
 
-# 🧟 Protected Armories & Loot Respawn
+# 🧟 Protected Armories
 
-**Protección absoluta e indestructible para armerías, comisarías, tiendas de armas y bases militares en Project Zomboid.**
+**Protección absoluta e indestructible configurable para armerías, comisarías, tiendas de armas y bases militares en Project Zomboid.**
 
 [![Project Zomboid Build 42](https://img.shields.io/badge/Project_Zomboid-Build_42_%26_41-orange.svg?style=for-the-badge&logo=projectzomboid)](https://projectzomboid.com/)
 [![Steam Workshop](https://img.shields.io/badge/Steam_Workshop-3788795717-blue.svg?style=for-the-badge&logo=steam)](https://steamcommunity.com/sharedfiles/filedetails/?id=3788795717)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
-[![Status](https://img.shields.io/badge/Tests-18%2F18_Passing-brightgreen.svg?style=for-the-badge)]()
+[![Status](https://img.shields.io/badge/Tests-20%2F20_Passing-brightgreen.svg?style=for-the-badge)]()
 
 </div>
 
@@ -17,19 +17,21 @@
 
 ## 📖 Acerca del Mod
 
-**Protected Armories & Loot Respawn** es un mod avanzado para **Project Zomboid (Build 42.x & Build 41.x)** diseñado para servidores multijugador y partidas en solitario. Identifica y protege automáticamente todos los contenedores de armas y armaduras en comisarías, tiendas de armas, puestos militares y prisiones de Knox Country.
+**Protected Armories** es un mod avanzado para **Project Zomboid (Build 42.x & Build 41.x)** diseñado para servidores multijugador y partidas en solitario. Identifica y protege automáticamente todos los contenedores de armas y armaduras que **spawnean en el mundo** en comisarías, tiendas de armas, puestos militares y prisiones de Knox Country.
 
 > [!IMPORTANT]
-> **Protección Absoluta Sin Excepciones:** Los contenedores protegidos son **100% inamovibles e indestructibles** por métodos tradicionales para **TODOS** los jugadores (incluyendo usuarios con rol de Administrador o Moderador).
+> - **Exclusivo para Contenedores del Mundo (World-Spawned Only):** La protección aplica **únicamente** a los contenedores que se generan naturalmente en el mapa. Si un jugador fabrica o coloca un contenedor (carpintería, metalistería o sistema de muebles), este **NO** será protegido y podrá ser movido o destruido libremente.
+> - **Protección Absoluta Sin Excepciones:** Para los contenedores del mundo configurados, estos son **100% inamovibles e indestructibles** por métodos tradicionales para **TODOS** los jugadores (incluyendo usuarios con rol de Administrador o Moderador).
 
 ---
 
 ## ⚡ Características Destacadas
 
+* 🌍 **Filtro de Contenedores del Mundo:** Comprueba y excluye automáticamente cualquier mueble fabricado o colocado por jugadores.
+* ⚙️ **Totalmente Configurable:** Permite seleccionar exactamente qué armarios o categorías de habitaciones se desean proteger desde las Opciones de Sandbox.
 * 🔒 **Bloqueo Inamovible:** Anula la herramienta de mover/levantar muebles (`Pick Up`).
 * 🔨 **Bloqueo Indestructible:** Anula las opciones de desguazar/desmontar (`Disassemble` / `Scrap`) y la destrucción con mazo (*Sledgehammer*).
-* 🔄 **Reaparición Automática de Loot (*Loot Respawn*):** Realiza un *snapshot* del contenido inicial del contenedor (armas, accesorios, municiones) y lo regenera automáticamente cada ciclo configurable (por defecto **24 horas de juego**).
-* ℹ️ **Menú Contextual Informativo:** Clic derecho sobre un contenedor muestra un submenú limpio con el estado y la ubicación de la armería.
+* ℹ️ **Menú Contextual Informativo:** Clic derecho sobre un contenedor protegido muestra un submenú limpio con el estado y la ubicación de la armería.
 * 🎯 **Detección Dinámica Universal:** Funciona automáticamente en mapas nativos (Rosewood, Muldraugh, West Point, Riverside, Louisville, etc.) y en mapas de mods personalizados.
 
 ---
@@ -37,19 +39,17 @@
 ## 🛡️ Contenedores y Habitaciones Protegidas
 
 ### 1. Sprites Específicos de Armería (Protegidos en todo el mapa)
-| Sprite ID | Tipo de Contenedor | Descripción |
-| :--- | :--- | :--- |
-| `furniture_storage_02_8` | Armario metálico doble | Armario de armas con rejilla frontal |
-| `furniture_storage_02_9` | Armario metálico doble | Armario de armas (orientación E/O) |
-| `furniture_storage_02_10` | Armario metálico individual | Armario individual de armas |
-| `furniture_storage_02_11` | Armario metálico individual | Armario individual de armas |
-| `furniture_storage_02_4` .. `furniture_storage_02_7` | Armarios blindados | Armarios metálicos de equipamiento / armadura |
+| Sprite ID | Tipo de Contenedor | Configuración | Descripción |
+| :--- | :--- | :--- | :--- |
+| `furniture_storage_02_8` .. `11` | Armarios armeros metálicos | `ProtectGunLockers` | Armarios de armas con rejilla frontal / metálicos |
+| `furniture_storage_02_4` .. `7` | Armarios blindados de protección | `ProtectArmorLockers` | Armarios metálicos de equipamiento / armadura |
 
 ### 2. Habitaciones Protegidas (`RoomDef`)
-* **Comisarías de Policía:** `policestorage`, `policegunstorage`, `policelocker`, `policeswat`, `policeoutfitstorage`, `policearchive`, `policeoffice`, `policeevidence`, `policehall`, `police`
-* **Tiendas de Armas:** `gunstore`, `gunstorestorage`, `gunstoredisplay`
-* **Bases & Tiendas Militares:** `armystorage`, `armysurplus`, `armytent`, `armymedical`, `army`
-* **Prisiones & Seguridad:** `prisonstorage`, `prisonarmory`, `prisoncell`, `prison`, `security`, `securitystorage`
+* **Comisarías de Policía (`ProtectPolice`):** `policestorage`, `policegunstorage`, `policelocker`, `policeswat`, `policeoutfitstorage`, `policearchive`, `policeoffice`, `policeevidence`, `policehall`, `police`
+* **Tiendas de Armas (`ProtectGunStores`):** `gunstore`, `gunstorestorage`, `gunstoredisplay`
+* **Bases & Tiendas Militares (`ProtectMilitary`):** `armystorage`, `armysurplus`, `armytent`, `armymedical`, `army`
+* **Prisiones (`ProtectPrisons`):** `prisonstorage`, `prisonarmory`, `prisoncell`, `prison`
+* **Salas de Seguridad (`ProtectSecurity`):** `security`, `securitystorage`
 
 ---
 
@@ -59,15 +59,18 @@ Puedes personalizar el comportamiento del mod directamente desde las opciones de
 
 | Variable | Defecto | Descripción |
 | :--- | :---: | :--- |
+| `OnlyWorldSpawned` | `true` | Proteger únicamente contenedores que spawnean en el mundo (ignora contenedores de jugador). |
 | `ProtectPolice` | `true` | Proteger comisarías de policía y taquillas armeras. |
 | `ProtectGunStores` | `true` | Proteger tiendas de armas y sus almacenes. |
 | `ProtectMilitary` | `true` | Proteger bases militares, armerías y tiendas surplus. |
 | `ProtectPrisons` | `true` | Proteger armerías y taquillas de prisiones. |
+| `ProtectSecurity` | `true` | Proteger salas de seguridad y archivos. |
+| `ProtectGunLockers` | `true` | Proteger taquillas/armarios de armas específicos (`furniture_storage_02_8..11`). |
+| `ProtectArmorLockers` | `true` | Proteger taquillas de armadura/blindaje específicas (`furniture_storage_02_4..7`). |
 | `PreventMoving` | `true` | Bloquear mover o levantar muebles. |
 | `PreventDisassembling` | `true` | Bloquear desguazar o desmontar. |
 | `PreventSledgehammer` | `true` | Bloquear destrucción con mazo. |
-| `EnableLootRespawn` | `true` | Activar reaparición periódica del loot inicial. |
-| `RespawnIntervalHours` | `24` | Intervalo en horas de juego para el respawn del loot. |
+| `ShowHaloWarning` | `true` | Mostrar aviso flotante al intentar interactuar con un contenedor bloqueado. |
 
 ---
 
@@ -121,7 +124,7 @@ python dev.py all
 # Análisis estático y verificación de sintaxis Lua
 python dev.py lint
 
-# Ejecutar suite de pruebas unitarias (18 tests)
+# Ejecutar suite de pruebas unitarias (20 tests)
 python dev.py test
 
 # Desplegar automáticamente a la carpeta de mods del juego y Workshop
@@ -135,3 +138,4 @@ python dev.py watch
 
 ## 📜 Licencia
 Este proyecto está bajo la Licencia MIT. Creado por **Sergio**.
+

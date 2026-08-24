@@ -1,20 +1,21 @@
 id=3788795717
 publishedID=3788795717
-title=Protected Armories & Loot Respawn
-description=Protege automáticamente armarios de armas y contenedores en comisarías, armerías, tiendas de armas, bases militares y prisiones: inamovibles, indestructibles y con reaparición automática de loot inicial.
+title=Protected Armories
+description=Protege automáticamente armarios de armas del mundo en comisarías, armerías, tiendas de armas, bases militares y prisiones: inamovibles, indestructibles y totalmente configurables por Sandbox. Ignora contenedores creados por jugadores.
 
-[h1]🧟 Protected Armories & Loot Respawn[/h1]
-[i]Unbreakable protection for armories, police lockers, gun stores & military bases in Project Zomboid (Build 42 & Build 41)[/i]
+[h1]🧟 Protected Armories[/h1]
+[i]Unbreakable & fully configurable protection for world-spawned armories, police lockers, gun stores & military bases in Project Zomboid (Build 42 & Build 41)[/i]
 
 [hr][/hr]
 
 [h2]⭐ CARACTERÍSTICAS PRINCIPALES / FEATURES[/h2]
 
 [list]
+[*] [b]🌍 Exclusivo para Contenedores del Mundo (World-Spawned Only):[/b] Comprueba automáticamente si un mueble/contenedor ha sido fabricado o colocado por un jugador (carpintería, metalistería, colocación de muebles) y lo excluye de la protección.
+[*] [b]⚙️ Totalmente Configurable:[/b] Permite seleccionar exactamente qué armarios o categorías de habitaciones se desean proteger desde las Opciones de Sandbox.
 [*] [b]🔒 Inamovible (Immovable):[/b] Anula la herramienta de mover/levantar muebles ([i]Pick Up[/i]).
 [*] [b]🔨 Indestructible:[/b] Anula las herramientas de desguazar/desmontar ([i]Disassemble / Scrap[/i]) y destrucción con mazo ([i]Sledgehammer[/i]) para [b]TODOS[/b] los jugadores sin excepción.
-[*] [b]🔄 Loot Respawn Automático:[/b] Guarda un [i]snapshot[/i] del contenido inicial del contenedor (armas, accesorios, municiones) y lo regenera automáticamente cada ciclo (24h de juego por defecto).
-[*] [b]ℹ️ Menú Contextual Informativo:[/b] Clic derecho sobre un armario protegido muestra su estado [b]"🔒 Armería Protegida [Ubicación]"[/b] e información del respawn.
+[*] [b]ℹ️ Menú Contextual Informativo:[/b] Clic derecho sobre un armario protegido muestra su estado [b]"🔒 Armería Protegida [Ubicación]"[/b].
 [*] [b]🎯 Detección Dinámica Universal:[/b] Funciona automáticamente en mapas nativos (Rosewood, Muldraugh, West Point, Riverside, Louisville, etc.) y en mapas de mods personalizados.
 [/list]
 
@@ -24,17 +25,17 @@ description=Protege automáticamente armarios de armas y contenedores en comisar
 
 [h3]1. Sprites Específicos de Armería (Protegidos en todo el mapa):[/h3]
 [list]
-[*] [b]furniture_storage_02_8, furniture_storage_02_9:[/b] Armarios dobles metálicos de armas.
-[*] [b]furniture_storage_02_10, furniture_storage_02_11:[/b] Armarios individuales metálicos de armas.
-[*] [b]furniture_storage_02_4 .. furniture_storage_02_7:[/b] Armarios metálicos blindados de equipamiento / armadura.
+[*] [b]furniture_storage_02_8, furniture_storage_02_9, 10, 11:[/b] Armarios metálicos de armas ([i]ProtectGunLockers[/i]).
+[*] [b]furniture_storage_02_4 .. furniture_storage_02_7:[/b] Armarios metálicos blindados de armadura ([i]ProtectArmorLockers[/i]).
 [/list]
 
 [h3]2. Habitaciones Protegidas (Todos los contenedores dentro de estas salas):[/h3]
 [list]
-[*] [b]Comisarías de Policía:[/b] policestorage, policegunstorage, policelocker, policeswat, policeoutfitstorage, policearchive, policeoffice, policeevidence, policehall, police
-[*] [b]Tiendas de Armas:[/b] gunstore, gunstorestorage, gunstoredisplay
-[*] [b]Bases & Tiendas Militares:[/b] armystorage, armysurplus, armytent, armymedical, army
-[*] [b]Prisiones & Seguridad:[/b] prisonstorage, prisonarmory, prisoncell, prison, security, securitystorage
+[*] [b]Comisarías de Policía ([i]ProtectPolice[/i]):[/b] policestorage, policegunstorage, policelocker, policeswat, policeoutfitstorage, policearchive, policeoffice, policeevidence, policehall, police
+[*] [b]Tiendas de Armas ([i]ProtectGunStores[/i]):[/b] gunstore, gunstorestorage, gunstoredisplay
+[*] [b]Bases & Tiendas Militares ([i]ProtectMilitary[/i]):[/b] armystorage, armysurplus, armytent, armymedical, army
+[*] [b]Prisiones ([i]ProtectPrisons[/i]):[/b] prisonstorage, prisonarmory, prisoncell, prison
+[*] [b]Salas de Seguridad ([i]ProtectSecurity[/i]):[/b] security, securitystorage
 [/list]
 
 [hr][/hr]
