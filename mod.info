@@ -1,6 +1,6 @@
 name=Protected Armories
 id=ProtectedArmories
-description=Protege armarios de armas del mundo en comisarias, armerias, tiendas de armas, bases militares y prisiones: inamovibles, indestructibles y completamente configurables por Sandbox. Ignora contenedores creados por jugadores. Sprites afectados: furniture_storage_02_4..11 y salas policestorage, policegunstorage, gunstorestorage, armystorage, prisonstorage, securitystorage.
+description=Protege armarios de armas del mundo en comisarias, armerias, tiendas de armas, bases militares y prisiones: inamovibles, indestructibles y completamente configurables por Sandbox. Ignora contenedores creados por jugadores. Permite anadir salas personalizadas via CustomRoomsList (Formato: Edificio|Habitacion|Categoria; Ej: Comisaria Mod|ravenpolicearmory|Police; Bunker|bunkergunroom|Military). Sprites afectados: furniture_storage_02_4..11 y salas policestorage, policegunstorage, gunstorestorage, armystorage, prisonstorage, securitystorage.
 poster=poster.png
 icon=icon.png
 versionMin=42.0.0

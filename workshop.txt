@@ -42,10 +42,19 @@ description=Protege automáticamente armarios de armas del mundo en comisarías,
 
 [h2]⚙️ OPCIONES DE SANDBOX CONFIGURABLES[/h2]
 [list]
-[*] [b]ProtectPolice / ProtectGunStores / ProtectMilitary / ProtectPrisons:[/b] Activa o desactiva la protección por tipo de zona.
-[*] [b]PreventMoving / PreventDisassembling / PreventSledgehammer:[/b] Activa o desactiva el bloqueo de mover, desmontar o mazo.
-[*] [b]EnableLootRespawn / RespawnIntervalHours:[/b] Configura el ciclo de reaparición del loot (ej: cada 24 horas).
+[*] [b]OnlyWorldSpawned:[/b] Proteger únicamente contenedores del mundo (ignora contenedores de jugador).
+[*] [b]ProtectPolice / ProtectGunStores / ProtectMilitary / ProtectPrisons / ProtectSecurity:[/b] Activa o desactiva la protección por tipo de edificio/zona.
+[*] [b]ProtectGunLockers / ProtectArmorLockers:[/b] Activa o desactiva la protección por taquillas metálicas específicas.
+[*] [b]PreventMoving / PreventDisassembling / PreventSledgehammer:[/b] Bloquea mover, desmontar o mazo.
+[*] [b]CustomRoomsList:[/b] Lista personalizada de texto para mapas mods.
 [/list]
+
+[h3]📝 Ejemplos para Lista Personalizada (CustomRoomsList):[/h3]
+[b]Formato:[/b] [i]Nombre de Edificio|Nombre de Habitación|Categoría[/i] (entradas separadas por ';')
+
+• [b]Ejemplo Comisaría Mod:[/b] [code]Comisaría Raven Creek|ravenpolicearmory|Police[/code]
+• [b]Ejemplo Búnker Militar:[/b] [code]Búnker Subterráneo|bunkergunroom|Military[/code]
+• [b]Ejemplo Múltiples Zonas:[/b] [code]Comisaría Raven Creek|ravenpolicearmory|Police;Búnker Subterráneo|bunkergunroom|Military;Tienda Custom|customgunstore|GunStore[/code]
 
 [hr][/hr]
 

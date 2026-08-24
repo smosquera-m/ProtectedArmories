@@ -71,6 +71,22 @@ Puedes personalizar el comportamiento del mod directamente desde las opciones de
 | `PreventDisassembling` | `true` | Bloquear desguazar o desmontar. |
 | `PreventSledgehammer` | `true` | Bloquear destrucción con mazo. |
 | `ShowHaloWarning` | `true` | Mostrar aviso flotante al intentar interactuar con un contenedor bloqueado. |
+| `CustomRoomsList` | `""` | Lista personalizada de edificios y habitaciones protegidas. |
+
+### 📝 Ejemplos de Configuración Personalizada (`CustomRoomsList`)
+
+Puedes añadir nuevos edificios y habitaciones (por ejemplo, para mapas de mods personalizados como *Raven Creek*, *Bedford Falls* o *Fort Redstone*) directamente en el campo de texto `CustomRoomsList` desde las Opciones de Sandbox:
+
+**Formato:** `Nombre de Edificio|Nombre de Habitación|Categoría` *(múltiples entradas separadas por `;`)*
+
+- **Ejemplo 1 (Añadir una armería en un mapa mod de comisaría):**
+  `Comisaría Raven Creek|ravenpolicearmory|Police`
+
+- **Ejemplo 2 (Añadir un búnker militar de armas):**
+  `Búnker Subterráneo|bunkergunroom|Military`
+
+- **Ejemplo 3 (Múltiples zonas personalizadas en la misma partida):**
+  `Comisaría Raven Creek|ravenpolicearmory|Police;Búnker Subterráneo|bunkergunroom|Military;Tienda Custom|customgunstore|GunStore`
 
 ---
 

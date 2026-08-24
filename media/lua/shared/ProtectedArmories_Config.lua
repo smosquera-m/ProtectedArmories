@@ -310,50 +310,82 @@ function ProtectedArmories.isProtected(object, spriteProps, playerObj)
 
     local isProt = false
     local catInfo = "None"
-    local detailObj = nil
+    local detailObj = {}
 
-    -- 1. Direct weapon/armor sprite match (e.g. Gun/Armor locker tiles anywhere)
-    if spriteName and spriteName ~= "" then
-        local spriteEntry = ProtectedArmories.getSpriteEntry(spriteName)
-        if spriteEntry then
-            local lockerType = spriteEntry.category
-            if lockerType == "GunLocker" and ProtectedArmories.getOption("ProtectGunLockers") then
-                isProt = true
-                catInfo = spriteEntry.containerName or ("Weapon Locker (" .. spriteName .. ")")
-                detailObj = spriteEntry
-            elseif lockerType == "ArmorLocker" and ProtectedArmories.getOption("ProtectArmorLockers") then
-                isProt = true
-                catInfo = spriteEntry.containerName or ("Armor Locker (" .. spriteName .. ")")
-                detailObj = spriteEntry
+    -- Check room metadata if container is inside a defined room
+    local roomEntry = nil
+    if square and square.getRoom and square:getRoom() ~= nil then
+        local room = square:getRoom()
+        local rName = room:getName()
+        if rName and rName ~= "" then
+            roomEntry = ProtectedArmories.getRoomEntry(rName)
+            if not roomEntry then
+                roomEntry = {
+                    building = "Edificio (" .. tostring(rName) .. ")",
+                    room = rName,
+                    roomName = rName,
+                    category = "Custom",
+                    defaultEnabled = true
+                }
             end
         end
     end
 
-    -- 2. Room-based match (e.g. any container in policegunstorage, policestorage, gunstorestorage, armystorage)
-    if not isProt and square and square.getRoom and square:getRoom() ~= nil then
-        local room = square:getRoom()
-        local roomName = room:getName()
-        if roomName then
-            local roomEntry = ProtectedArmories.getRoomEntry(roomName)
-            if roomEntry then
-                local roomCategory = roomEntry.category
-                
-                if (roomCategory == "Police" and ProtectedArmories.getOption("ProtectPolice"))
-                or (roomCategory == "GunStore" and ProtectedArmories.getOption("ProtectGunStores"))
-                or (roomCategory == "Military" and ProtectedArmories.getOption("ProtectMilitary"))
-                or (roomCategory == "Prison" and ProtectedArmories.getOption("ProtectPrisons"))
-                or (roomCategory == "Security" and ProtectedArmories.getOption("ProtectSecurity"))
-                or (roomCategory ~= "Police" and roomCategory ~= "GunStore" and roomCategory ~= "Military" and roomCategory ~= "Prison" and roomCategory ~= "Security") then
-                    isProt = true
-                    catInfo = roomEntry.building .. " - " .. (roomEntry.roomName or roomName)
-                    detailObj = roomEntry
-                end
-            end
+    -- Check sprite metadata
+    local spriteEntry = nil
+    if spriteName and spriteName ~= "" then
+        spriteEntry = ProtectedArmories.getSpriteEntry(spriteName)
+    end
+
+    -- 1. Direct weapon/armor locker sprite match
+    if spriteEntry then
+        local lockerType = spriteEntry.category
+        if lockerType == "GunLocker" and ProtectedArmories.getOption("ProtectGunLockers") then
+            isProt = true
+            catInfo = spriteEntry.containerName or ("Weapon Locker (" .. spriteName .. ")")
+        elseif lockerType == "ArmorLocker" and ProtectedArmories.getOption("ProtectArmorLockers") then
+            isProt = true
+            catInfo = spriteEntry.containerName or ("Armor Locker (" .. spriteName .. ")")
+        end
+    end
+
+    -- 2. Room-based match
+    if not isProt and roomEntry then
+        local roomCategory = roomEntry.category
+        if (roomCategory == "Police" and ProtectedArmories.getOption("ProtectPolice"))
+        or (roomCategory == "GunStore" and ProtectedArmories.getOption("ProtectGunStores"))
+        or (roomCategory == "Military" and ProtectedArmories.getOption("ProtectMilitary"))
+        or (roomCategory == "Prison" and ProtectedArmories.getOption("ProtectPrisons"))
+        or (roomCategory == "Security" and ProtectedArmories.getOption("ProtectSecurity"))
+        or (roomCategory ~= "Police" and roomCategory ~= "GunStore" and roomCategory ~= "Military" and roomCategory ~= "Prison" and roomCategory ~= "Security") then
+            isProt = true
+            catInfo = roomEntry.building .. " - " .. (roomEntry.roomName or roomEntry.room)
         end
     end
 
     if not isProt then
         return false, "None", false, nil
+    end
+
+    -- Combine building, room, and container details
+    if roomEntry then
+        detailObj.building = roomEntry.building
+        detailObj.room = roomEntry.room
+        detailObj.roomName = roomEntry.roomName
+        detailObj.category = roomEntry.category
+    else
+        detailObj.building = spriteEntry and spriteEntry.building or "Ubicacion General"
+        detailObj.room = "General"
+        detailObj.roomName = "General"
+        detailObj.category = spriteEntry and spriteEntry.category or "General"
+    end
+
+    if spriteEntry then
+        detailObj.containerName = spriteEntry.containerName or spriteName
+    elseif containerType and containerType ~= "" then
+        detailObj.containerName = containerType
+    else
+        detailObj.containerName = "Contenedor de Armas"
     end
 
     return true, catInfo, false, detailObj
