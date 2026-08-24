@@ -1,105 +1,118 @@
-VERSION = 1
+VERSION = 1,
 
-option OnlyWorldSpawned
+option ProtectedArmories.OnlyWorldSpawned
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_OnlyWorldSpawned,
+    translation = ProtectedArmories_OnlyWorldSpawned,
+    tooltip = ProtectedArmories_OnlyWorldSpawned_tooltip,
 }
 
-option ProtectPolice
+option ProtectedArmories.ProtectPolice
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_ProtectPolice,
+    translation = ProtectedArmories_ProtectPolice,
+    tooltip = ProtectedArmories_ProtectPolice_tooltip,
 }
 
-option ProtectGunStores
+option ProtectedArmories.ProtectGunStores
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_ProtectGunStores,
+    translation = ProtectedArmories_ProtectGunStores,
+    tooltip = ProtectedArmories_ProtectGunStores_tooltip,
 }
 
-option ProtectMilitary
+option ProtectedArmories.ProtectMilitary
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_ProtectMilitary,
+    translation = ProtectedArmories_ProtectMilitary,
+    tooltip = ProtectedArmories_ProtectMilitary_tooltip,
 }
 
-option ProtectPrisons
+option ProtectedArmories.ProtectPrisons
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_ProtectPrisons,
+    translation = ProtectedArmories_ProtectPrisons,
+    tooltip = ProtectedArmories_ProtectPrisons_tooltip,
 }
 
-option ProtectSecurity
+option ProtectedArmories.ProtectSecurity
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_ProtectSecurity,
+    translation = ProtectedArmories_ProtectSecurity,
+    tooltip = ProtectedArmories_ProtectSecurity_tooltip,
 }
 
-option ProtectGunLockers
+option ProtectedArmories.ProtectGunLockers
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_ProtectGunLockers,
+    translation = ProtectedArmories_ProtectGunLockers,
+    tooltip = ProtectedArmories_ProtectGunLockers_tooltip,
 }
 
-option ProtectArmorLockers
+option ProtectedArmories.ProtectArmorLockers
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_ProtectArmorLockers,
+    translation = ProtectedArmories_ProtectArmorLockers,
+    tooltip = ProtectedArmories_ProtectArmorLockers_tooltip,
 }
 
-option PreventMoving
+option ProtectedArmories.PreventMoving
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_PreventMoving,
+    translation = ProtectedArmories_PreventMoving,
+    tooltip = ProtectedArmories_PreventMoving_tooltip,
 }
 
-option PreventDisassembling
+option ProtectedArmories.PreventDisassembling
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_PreventDisassembling,
+    translation = ProtectedArmories_PreventDisassembling,
+    tooltip = ProtectedArmories_PreventDisassembling_tooltip,
 }
 
-option PreventSledgehammer
+option ProtectedArmories.PreventSledgehammer
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_PreventSledgehammer,
+    translation = ProtectedArmories_PreventSledgehammer,
+    tooltip = ProtectedArmories_PreventSledgehammer_tooltip,
 }
 
-option ShowHaloWarning
+option ProtectedArmories.ShowHaloWarning
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_ShowHaloWarning,
+    translation = ProtectedArmories_ShowHaloWarning,
+    tooltip = ProtectedArmories_ShowHaloWarning_tooltip,
 }
 
-option CustomRoomsList
+option ProtectedArmories.CustomRoomsList
 {
     type = string,
     default = "",
     page = ProtectedArmories,
-    translation = Sandbox_ProtectedArmories_CustomRoomsList,
+    translation = ProtectedArmories_CustomRoomsList,
+    tooltip = ProtectedArmories_CustomRoomsList_tooltip,
 }
