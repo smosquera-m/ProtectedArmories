@@ -198,12 +198,44 @@ end
 --- @param optionName string
 --- @return any
 function ProtectedArmories.getOption(optionName)
-    if SandboxVars and SandboxVars.ProtectedArmories and SandboxVars.ProtectedArmories[optionName] ~= nil then
-        return SandboxVars.ProtectedArmories[optionName]
+    if not optionName then return false end
+
+    -- 1. Query live SandboxOptions Java object for dynamic in-game menu changes
+    if getSandboxOptions then
+        local sb = getSandboxOptions()
+        if sb then
+            local opt = sb:getOptionByName("ProtectedArmories." .. tostring(optionName))
+            if not opt then
+                opt = sb:getOptionByName(tostring(optionName))
+            end
+            if opt then
+                if opt.getValue then
+                    return opt:getValue()
+                elseif opt.asConfigOption and opt:asConfigOption() and opt:asConfigOption().getValue then
+                    return opt:asConfigOption():getValue()
+                end
+            end
+        end
     end
-    if ProtectedArmories.DefaultConfig[optionName] ~= nil then
+
+    -- 2. Query SandboxVars table
+    if SandboxVars then
+        if SandboxVars.ProtectedArmories and SandboxVars.ProtectedArmories[optionName] ~= nil then
+            return SandboxVars.ProtectedArmories[optionName]
+        end
+        if SandboxVars["ProtectedArmories_" .. tostring(optionName)] ~= nil then
+            return SandboxVars["ProtectedArmories_" .. tostring(optionName)]
+        end
+        if SandboxVars[optionName] ~= nil then
+            return SandboxVars[optionName]
+        end
+    end
+
+    -- 3. Fallback to DefaultConfig
+    if ProtectedArmories.DefaultConfig and ProtectedArmories.DefaultConfig[optionName] ~= nil then
         return ProtectedArmories.DefaultConfig[optionName]
     end
+
     return false
 end
 
