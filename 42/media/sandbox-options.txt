@@ -1,106 +1,105 @@
 VERSION = 1
 
-option ProtectedArmories.OnlyWorldSpawned
+option OnlyWorldSpawned
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_OnlyWorldSpawned,
+    translation = Sandbox_ProtectedArmories_OnlyWorldSpawned,
 }
 
-option ProtectedArmories.ProtectPolice
+option ProtectPolice
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_ProtectPolice,
+    translation = Sandbox_ProtectedArmories_ProtectPolice,
 }
 
-option ProtectedArmories.ProtectGunStores
+option ProtectGunStores
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_ProtectGunStores,
+    translation = Sandbox_ProtectedArmories_ProtectGunStores,
 }
 
-option ProtectedArmories.ProtectMilitary
+option ProtectMilitary
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_ProtectMilitary,
+    translation = Sandbox_ProtectedArmories_ProtectMilitary,
 }
 
-option ProtectedArmories.ProtectPrisons
+option ProtectPrisons
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_ProtectPrisons,
+    translation = Sandbox_ProtectedArmories_ProtectPrisons,
 }
 
-option ProtectedArmories.ProtectSecurity
+option ProtectSecurity
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_ProtectSecurity,
+    translation = Sandbox_ProtectedArmories_ProtectSecurity,
 }
 
-option ProtectedArmories.ProtectGunLockers
+option ProtectGunLockers
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_ProtectGunLockers,
+    translation = Sandbox_ProtectedArmories_ProtectGunLockers,
 }
 
-option ProtectedArmories.ProtectArmorLockers
+option ProtectArmorLockers
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_ProtectArmorLockers,
+    translation = Sandbox_ProtectedArmories_ProtectArmorLockers,
 }
 
-option ProtectedArmories.PreventMoving
+option PreventMoving
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_PreventMoving,
+    translation = Sandbox_ProtectedArmories_PreventMoving,
 }
 
-option ProtectedArmories.PreventDisassembling
+option PreventDisassembling
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_PreventDisassembling,
+    translation = Sandbox_ProtectedArmories_PreventDisassembling,
 }
 
-option ProtectedArmories.PreventSledgehammer
+option PreventSledgehammer
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_PreventSledgehammer,
+    translation = Sandbox_ProtectedArmories_PreventSledgehammer,
 }
 
-option ProtectedArmories.ShowHaloWarning
+option ShowHaloWarning
 {
     type = boolean,
     default = true,
     page = ProtectedArmories,
-    translation = ProtectedArmories_ShowHaloWarning,
+    translation = Sandbox_ProtectedArmories_ShowHaloWarning,
 }
 
-option ProtectedArmories.CustomRoomsList
+option CustomRoomsList
 {
     type = string,
     default = "",
     page = ProtectedArmories,
-    translation = ProtectedArmories_CustomRoomsList,
+    translation = Sandbox_ProtectedArmories_CustomRoomsList,
 }
-

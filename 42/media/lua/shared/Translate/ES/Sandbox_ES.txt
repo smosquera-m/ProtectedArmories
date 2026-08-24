@@ -1,5 +1,5 @@
 Sandbox_ES = {
-    Sandbox_ProtectedArmories = "Protected Armories",
+    Sandbox_ProtectedArmories = "Armerias Protegidas",
     Sandbox_ProtectedArmories_OnlyWorldSpawned = "Solo Contenedores del Mundo",
     Sandbox_ProtectedArmories_OnlyWorldSpawned_tooltip = "Proteger UNICAMENTE contenedores generados en el mundo. Ignora los construidos o colocados por jugadores.",
     Sandbox_ProtectedArmories_ProtectPolice = "Proteger Comisarias de Policia",
