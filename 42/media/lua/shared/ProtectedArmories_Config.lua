@@ -21,6 +21,46 @@ ProtectedArmories.DefaultConfig = {
     PreventSledgehammer     = true,     -- Prevent sledgehammer destruction
     ShowHaloWarning         = true,     -- Display floating warning message on interaction
     CustomRoomsList         = "",       -- Custom entries format: "Building|Room|Category;..."
+    CustomContainersList    = "",       -- Custom entries format: "Building|Room|Containers|Category;..."
+}
+
+-- Hierarchical Default Building Definitions (Building -> Rooms & Protected Containers)
+ProtectedArmories.BuildingDefinitions = {
+    {
+        building = "Comisaria de Policia",
+        category = "Police",
+        sandboxOption = "ProtectPolice",
+        rooms = { "policegunstorage", "policestorage", "policelocker", "policeswat", "policeoutfitstorage", "policearchive", "policeoffice", "policeevidence", "policehall", "police" },
+        containers = { "furniture_storage_02_8", "furniture_storage_02_9", "furniture_storage_02_10", "furniture_storage_02_11", "furniture_storage_02_4", "furniture_storage_02_5", "furniture_storage_02_6", "furniture_storage_02_7", "locker", "metal_locker", "*" },
+    },
+    {
+        building = "Tienda de Armas",
+        category = "GunStore",
+        sandboxOption = "ProtectGunStores",
+        rooms = { "gunstorestorage", "gunstore", "gunstoredisplay" },
+        containers = { "furniture_storage_02_8", "furniture_storage_02_9", "furniture_storage_02_10", "furniture_storage_02_11", "displaycase", "shelf", "counter", "gunrack", "locker", "*" },
+    },
+    {
+        building = "Base Militar",
+        category = "Military",
+        sandboxOption = "ProtectMilitary",
+        rooms = { "armystorage", "armysurplus", "armytent", "armymedical", "army" },
+        containers = { "furniture_storage_02_8", "furniture_storage_02_9", "furniture_storage_02_10", "furniture_storage_02_11", "crate", "military_crate", "locker", "*" },
+    },
+    {
+        building = "Prision",
+        category = "Prison",
+        sandboxOption = "ProtectPrisons",
+        rooms = { "prisonstorage", "prisonarmory", "prisoncell", "prison" },
+        containers = { "furniture_storage_02_8", "furniture_storage_02_9", "furniture_storage_02_10", "furniture_storage_02_11", "furniture_storage_02_4", "furniture_storage_02_5", "locker", "*" },
+    },
+    {
+        building = "Edificio de Seguridad",
+        category = "Security",
+        sandboxOption = "ProtectSecurity",
+        rooms = { "securitystorage", "security" },
+        containers = { "furniture_storage_02_8", "furniture_storage_02_9", "furniture_storage_02_10", "furniture_storage_02_11", "safe", "locker", "*" },
+    },
 }
 
 -- Structured default list of protected room definitions with Building & Room metadata
@@ -123,7 +163,101 @@ ProtectedArmories.WeaponSprites = {
     ["furniture_storage_02_5"]  = "ArmorLocker",
     ["furniture_storage_02_6"]  = "ArmorLocker",
     ["furniture_storage_02_7"]  = "ArmorLocker",
-}
+--- Retrieves building metadata definition entry matching roomName and container sprite/type
+--- @param roomName string
+--- @param spriteName string
+--- @param containerType string
+--- @return table|nil entry { building, room, roomName, category }
+function ProtectedArmories.getBuildingEntry(roomName, spriteName, containerType)
+    local customListStr = ProtectedArmories.getOption("CustomContainersList")
+    if not customListStr or customListStr == "" then
+        customListStr = ProtectedArmories.getOption("CustomRoomsList")
+    end
+
+    if customListStr and customListStr ~= "" then
+        for customEntryStr in string.gmatch(customListStr, "([^;]+)") do
+            local building, rName, cList, category = string.match(customEntryStr, "^([^|]+)|([^|]+)|([^|]+)|([^|]+)$")
+            if not building then
+                building, rName, category = string.match(customEntryStr, "^([^|]+)|([^|]+)|([^|]+)$")
+                cList = "*"
+            end
+
+            if rName and roomName and string.lower(string.trim and string.trim(rName) or rName) == string.lower(roomName) then
+                local containerMatch = false
+                if cList == "*" or not cList or cList == "" then
+                    containerMatch = true
+                else
+                    for targetContainer in string.gmatch(cList, "([^,]+)") do
+                        local cleanTarget = string.lower(string.trim and string.trim(targetContainer) or targetContainer)
+                        if (spriteName and string.lower(spriteName) == cleanTarget)
+                        or (containerType and string.lower(containerType) == cleanTarget)
+                        or cleanTarget == "*" then
+                            containerMatch = true
+                            break
+                        end
+                    end
+                end
+
+                if containerMatch then
+                    return {
+                        building = building and (string.trim and string.trim(building) or building) or "Edificio Personalizado",
+                        room = roomName,
+                        roomName = roomName,
+                        category = category and (string.trim and string.trim(category) or category) or "Custom",
+                        defaultEnabled = true
+                    }
+                end
+            end
+        end
+    end
+
+    if roomName and roomName ~= "" then
+        for _, bDef in ipairs(ProtectedArmories.BuildingDefinitions or {}) do
+            local roomMatched = false
+            for _, r in ipairs(bDef.rooms or {}) do
+                if r == roomName then
+                    roomMatched = true
+                    break
+                end
+            end
+
+            if roomMatched then
+                local containerMatched = false
+                if bDef.containers then
+                    for _, c in ipairs(bDef.containers) do
+                        if c == "*"
+                        or (spriteName and spriteName == c)
+                        or (containerType and string.lower(containerType) == string.lower(c)) then
+                            containerMatched = true
+                            break
+                        end
+                    end
+                else
+                    containerMatched = true
+                end
+
+                if containerMatched then
+                    local rNameFormatted = roomName
+                    for _, dEntry in ipairs(ProtectedArmories.DefaultProtectedList or {}) do
+                        if dEntry.room == roomName then
+                            rNameFormatted = dEntry.roomName
+                            break
+                        end
+                    end
+                    return {
+                        building = bDef.building,
+                        room = roomName,
+                        roomName = rNameFormatted,
+                        category = bDef.category,
+                        defaultEnabled = true
+                    }
+                end
+            end
+        end
+    end
+
+    return nil
+end
 
 --- Retrieves room metadata definition entry by room definition name
 --- @param roomName string
@@ -350,7 +484,10 @@ function ProtectedArmories.isProtected(object, spriteProps, playerObj)
         local room = square:getRoom()
         local rName = room:getName()
         if rName and rName ~= "" then
-            roomEntry = ProtectedArmories.getRoomEntry(rName)
+            roomEntry = ProtectedArmories.getBuildingEntry(rName, spriteName, containerType)
+            if not roomEntry then
+                roomEntry = ProtectedArmories.getRoomEntry(rName)
+            end
             if not roomEntry then
                 roomEntry = {
                     building = "Edificio (" .. tostring(rName) .. ")",

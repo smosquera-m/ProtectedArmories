@@ -25,5 +25,7 @@
     "Sandbox_ProtectedArmories_ShowHaloWarning": "Mostrar Aviso Flotante (Halo)",
     "Sandbox_ProtectedArmories_ShowHaloWarning_tooltip": "Mostrar texto de advertencia sobre la cabeza del personaje al intentar interactuar.",
     "Sandbox_ProtectedArmories_CustomRoomsList": "Lista Personalizada de Habitaciones",
-    "Sandbox_ProtectedArmories_CustomRoomsList_tooltip": "Formato: Edificio|Habitacion|Categoria; Edificio|Habitacion|Categoria"
+    "Sandbox_ProtectedArmories_CustomRoomsList_tooltip": "Formato: Edificio|Habitacion|Categoria; Edificio|Habitacion|Categoria",
+    "Sandbox_ProtectedArmories_CustomContainersList": "Lista Personalizada por Edificio",
+    "Sandbox_ProtectedArmories_CustomContainersList_tooltip": "Formato: Edificio|Habitacion|Contenedores|Categoria; Ej: Comisaria Mod|ravenpolicearmory|furniture_storage_02_8,locker|Police"
 }

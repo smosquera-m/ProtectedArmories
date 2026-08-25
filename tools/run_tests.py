@@ -160,7 +160,7 @@ def run_tests():
 
     # TEST 7: Building & Room Metadata Structures Check
     print(f"\n  {BOLD}[Test Suite 7: Building & Room Metadata Structures Check]{RESET}")
-    meta_keys = ["DefaultProtectedList", "DefaultSpriteList", "getRoomEntry", "getSpriteEntry", "CustomRoomsList"]
+    meta_keys = ["BuildingDefinitions", "DefaultProtectedList", "DefaultSpriteList", "getBuildingEntry", "getRoomEntry", "getSpriteEntry", "CustomContainersList"]
     missing_meta_keys = [k for k in meta_keys if k not in config_code]
 
     if not missing_meta_keys:

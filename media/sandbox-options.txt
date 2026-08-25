@@ -116,3 +116,12 @@ option ProtectedArmories.CustomRoomsList
     translation = ProtectedArmories_CustomRoomsList,
     tooltip = ProtectedArmories_CustomRoomsList_tooltip,
 }
+
+option ProtectedArmories.CustomContainersList
+{
+    type = string,
+    default = "",
+    page = ProtectedArmories,
+    translation = ProtectedArmories_CustomContainersList,
+    tooltip = ProtectedArmories_CustomContainersList_tooltip,
+}

@@ -25,5 +25,7 @@
     "Sandbox_ProtectedArmories_ShowHaloWarning": "Show Halo Warning",
     "Sandbox_ProtectedArmories_ShowHaloWarning_tooltip": "Show floating text warning above character when trying to interact with protected container.",
     "Sandbox_ProtectedArmories_CustomRoomsList": "Custom Rooms List",
-    "Sandbox_ProtectedArmories_CustomRoomsList_tooltip": "Format: Building|Room|Category; Building|Room|Category"
+    "Sandbox_ProtectedArmories_CustomRoomsList_tooltip": "Format: Building|Room|Category; Building|Room|Category",
+    "Sandbox_ProtectedArmories_CustomContainersList": "Custom Building Containers List",
+    "Sandbox_ProtectedArmories_CustomContainersList_tooltip": "Format: Building|Room|Containers|Category; Ex: Mod Police|ravenpolicearmory|furniture_storage_02_8,locker|Police"
 }
